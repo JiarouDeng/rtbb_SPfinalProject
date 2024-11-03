@@ -33,6 +33,8 @@ if [ ! -z $QUERY_STRING ]; then
         array[${parm[i]}]=${parm[i+1]}
     done
 
+    array[ipaddr]=$ip_address
+
     register_voter
 fi
 

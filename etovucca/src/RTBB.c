@@ -125,7 +125,7 @@ int main(int argc, char **argv)
          printf("%s", USAGE);
          return ERROR;
       }
-      strncpy(name, argv[3], MAX_NAME_LEN - 1);
+      strcpy(name, argv[3]);
       printf("%d\n", storeOffice(db, election, name));
       return 0;
    }
