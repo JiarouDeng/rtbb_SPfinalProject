@@ -24,15 +24,15 @@ void addZip(sqlite3 *db, _id_t office, int zip);
 bool checkZip(sqlite3 *db, _id_t office, int zip);
 
 /* returns voter id */
-_id_t storeVoter(sqlite3 *db, char* name, char* county, int zip, Date dob);
+_id_t storeVoter(sqlite3 *db, char *name, char *county, int zip, Date dob);
 
 void storeStatus(sqlite3 *db, _id_t election, Status);
 
 void deleteElection(sqlite3 *db, _id_t election);
 
-void getVoter(sqlite3 *db, _id_t voter_id, Registration*);
+void getVoter(sqlite3 *db, _id_t voter_id, Registration *);
 
-void getElection(sqlite3 *db, _id_t election_id, Election*);
+void getElection(sqlite3 *db, _id_t election_id, Election *);
 
 void storeVote(sqlite3 *db, _id_t voter, _id_t candidate, _id_t office);
 

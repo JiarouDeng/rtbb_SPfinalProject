@@ -15,7 +15,7 @@ register_voter() {
     if [ ! $id -eq 0 ]; then
         echo "<b>Voter registered. ID: $id</b>"
     else
-        echo "<b>Error in registering voter. Please try again.</b>"
+        echo "<b>Error in registering voter. Please try again. Return: $id </b>"
     fi
 }
 
