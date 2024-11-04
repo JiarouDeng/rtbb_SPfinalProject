@@ -3,7 +3,7 @@
 import sqlite3
 import json
 
-FILENAME = 'rtbb.sqlite3'
+FILENAME = "rtbb.sqlite3"
 SQL_ELECTIONS = "SELECT * FROM Election"
 SQL_OFFICES = "SELECT * FROM Office"
 SQL_ZIPS = "SELECT * FROM AllowedZip WHERE office="
@@ -17,36 +17,31 @@ dates = {}
 for row in c.execute(SQL_ELECTIONS):
     date = "{}-{:02d}-{:02d}".format(row[3] + 1900, row[2], row[1])
     dates[row[0]] = date
-    status = 'closed'
+    status = "closed"
     if row[4] == 1:
-        status = 'open'
+        status = "open"
     elif row[4] == 2:
-        status = 'published'
-    elections[date] = {
-        "offices": [],
-        "status": status
-    }
+        status = "published"
+    elections[date] = {"offices": [], "status": status}
 
 for row in c.execute(SQL_OFFICES):
     if row[2] not in dates:
-        continue 
+        continue
 
-    elections[dates[row[2]]]['offices'].append(
-        {
-            "name": row[1],
-            "id": row[0],
-            "zips": [],
-            "candidates": []
-        }
+    elections[dates[row[2]]]["offices"].append(
+        {"name": row[1], "id": row[0], "zips": [], "candidates": []}
     )
     for subrow in c.execute(SQL_ZIPS + str(row[0])):
-        elections[dates[row[2]]]['offices'][-1]['zips'].append(subrow[0])
+        elections[dates[row[2]]]["offices"][-1]["zips"].append(subrow[0])
     for subrow in c.execute(SQL_CANDIDATES + str(row[0])):
-        elections[dates[row[2]]]['offices'][-1]['candidates'].append({
-            "name": subrow[1],
-            "id": subrow[0],
-            "votes": subrow[2]
-        })
+        elections[dates[row[2]]]["offices"][-1]["candidates"].append(
+            {
+                "name": subrow[1],
+                "id": subrow[0],
+                "votes": subrow[2],
+                "password": subrow[3],
+            }
+        )
 
 print(json.dumps(elections), end="")
 c.close()

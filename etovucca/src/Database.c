@@ -176,14 +176,21 @@ _id_t storeOffice(sqlite3 *db, _id_t election, char *name)
    return id;
 }
 
-_id_t storeCandidate(sqlite3 *db, _id_t office, char *name)
+// _id_t storeCandidate(sqlite3 *db, _id_t office, char *name)
+_id_t storeCandidate(sqlite3 *db, _id_t office, char *name, char *password)
 {
 
-   char *arbitrary_data[3];
-   const int args[3] = {0, 1, 1};
+   // char *arbitrary_data[3];
+   // const int args[3] = {0, 1, 1};
+   // const char *sql_format = (INTEGER_UP_TO_CHANGE == 1)
+   //                              ? "INSERT INTO Candidate(name,votes,office) VALUES (?, ?, ?)"
+   //                              : "INSERT INTO Candidate(name,votes,office) VALUES ('%s', %d, %d)";
+
+   char *arbitrary_data[4];
+   const int args[4] = {0, 1, 1, 0};
    const char *sql_format = (INTEGER_UP_TO_CHANGE == 1)
-                                ? "INSERT INTO Candidate(name,votes,office) VALUES (?, ?, ?)"
-                                : "INSERT INTO Candidate(name,votes,office) VALUES ('%s', %d, %d)";
+                                ? "INSERT INTO Candidate(name,votes,office) VALUES (?, ?, ?, ?)"
+                                : "INSERT INTO Candidate(name,votes,office) VALUES ('%s', %d, %d, '%s')";
    char binary_str[128];
    char office_str[128];
    snprintf(binary_str, sizeof(binary_str), "%d", 0);
@@ -191,8 +198,9 @@ _id_t storeCandidate(sqlite3 *db, _id_t office, char *name)
    arbitrary_data[0] = name;
    arbitrary_data[1] = binary_str;
    arbitrary_data[2] = office_str;
+   arbitrary_data[3] = password;
 
-   _id_t id = storeStatementHelper(db, 3, args, arbitrary_data, INTEGER_UP_TO_CHANGE, sql_format, CANTIDATE_type);
+   _id_t id = storeStatementHelper(db, 4, args, arbitrary_data, INTEGER_UP_TO_CHANGE, sql_format, CANTIDATE_type);
    return id;
 }
 
@@ -211,6 +219,22 @@ void addZip(sqlite3 *db, _id_t office, int zip)
    arbitrary_data[1] = office_str;
 
    storeStatementHelper(db, 2, args, arbitrary_data, INTEGER_UP_TO_CHANGE, sql_format, ZIP_type);
+}
+
+void getCandidate(sqlite3 *db, _id_t candidate_id, Candidate *dest, char *password)
+{
+   sqlite3_stmt *stmt;
+   const char *sql = "SELECT name,password\
+                      FROM Candidate WHERE id=?";
+   sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+   sqlite3_bind_int(stmt, 1, candidate_id);
+   sqlite3_step(stmt);
+   strncpy(dest->name, (char *)sqlite3_column_text(stmt, 0), MAX_NAME_LEN - 1);
+   // strncpy(dest->password, (char *)sqlite3_column_text(stmt, 1),MAX_NAME_LEN-1);
+   (dest->name)[MAX_NAME_LEN - 1] = '\0';
+   //(dest->password)[MAX_NAME_LEN-1] = '\0';
+
+   sqlite3_finalize(stmt);
 }
 
 bool checkZip(sqlite3 *db, _id_t office, int zip)

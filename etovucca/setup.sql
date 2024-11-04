@@ -45,7 +45,8 @@ CREATE TABLE Candidate (
   name VARCHAR(128) NOT NULL,
   votes INTEGER NOT NULL,
   office INTEGER REFERENCES Office(id),
-  UNIQUE(name,office)
+  password VARCHAR(128) NOT NULL,
+  UNIQUE(name,office,password)
 );
 
 DROP TABLE IF EXISTS Vote;
