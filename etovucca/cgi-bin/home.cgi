@@ -12,6 +12,7 @@ render_home() {
     echo "<li><a href='./vote.cgi'>Vote for an Office</a></li>"
     echo "<li><a href='./login.cgi'>Administrator Interface (Requires Login)</a></li>"
     echo "<li><a href='./cand_login.cgi'>Candidate Interface (Requires Login)</a></li>"
+    echo "<li><a href='./cand_profile.cgi'>Candidate Profile </a></li>"
     echo "</ul>"
 }
 
