@@ -24,7 +24,7 @@ const char *USAGE = "Usage:\n\
    get-voters\n\
 ";
 
-// replaced line: add-candidate <office id> <name> -> <candidate id>\n\
+ // replaced line: add-candidate <office id> <name> -> <candidate id>\n
 
 bool isEligible(_id_t election, _id_t office, _id_t voter);
 bool is18AtDeadline(Date dob, Date deadline);
