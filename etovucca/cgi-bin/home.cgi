@@ -9,10 +9,10 @@ render_home() {
     echo "<h1 id='home'>Home</h1><br>"
     echo "<ul>"
     echo "<li><a href='./register.cgi'>Register to Vote</a></li>"
+    echo "<li><a href='./cand_profile_v2.cgi'>Candidate Profile </a></li>"
     echo "<li><a href='./vote.cgi'>Vote for an Office</a></li>"
     echo "<li><a href='./login.cgi'>Administrator Interface (Requires Login)</a></li>"
     echo "<li><a href='./cand_login_v2.cgi'>Candidate Interface (Requires Login)</a></li>"
-    echo "<li><a href='./cand_profile_v2.cgi'>Candidate Profile </a></li>"
     echo "</ul>"
 }
 

@@ -12,14 +12,10 @@ ID_SQL = "SELECT id FROM Election WHERE deadline_day={} AND deadline_mon={} AND 
 
 def convert_date_to_id(date):
     # Please don't ever actually do this.
-    with open("logger.txt", "a") as f:
-        f.write(date)
     date_positions = date.split("-")
     sql = ID_SQL.format(
         date_positions[2], date_positions[1], int(date_positions[0]) - 1900
-    )  # U+1F914
-    with open("logger.txt", "a") as f:
-        f.write(sql)
+    )
     election_id = int(subprocess.check_output([PATH_TO_SQLITE, PATH_TO_DB, sql]))
     return election_id
 
@@ -36,14 +32,8 @@ try:
     )
     elections = json.loads(json_elections)
     if len(form) != 0:
-        # ids = form.getvalue("election").split("_")
         date_info = re.search(r"[\d]+-[\d]+-[\d]+", form.getvalue("election"))
         id_info = re.search(r"_(\d+)_(\d+)", form.getvalue("election"))
-        with open("logger.txt", "a") as f:
-            f.write(f"{date_info.group()}\n")
-            if id_info is not None:
-                f.write(f"{id_info.group(1)}\n")
-                f.write(f"{id_info.group(2)}\n")
 
         unique_office_id = str(
             elections[date_info.group()]["offices"][int(id_info.group(1))]["id"]
@@ -53,10 +43,6 @@ try:
                 "candidates"
             ][int(id_info.group(2))]["id"]
         )
-        with open("logger.txt", "a") as f:
-            f.write(
-                f"getting unique_office_id {unique_office_id} and unqiue_candidate_id {unqiue_candidate_id}"
-            )
         subprocess.check_output(
             [
                 PATH_TO_MACHINE,

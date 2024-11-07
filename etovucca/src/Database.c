@@ -5,7 +5,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
-#define INTEGER_UP_TO_CHANGE 0
+#define INTEGER_UP_TO_CHANGE 1
 #define MAX_SQL_LENGTH 4096
 
 enum _store_type
@@ -19,26 +19,10 @@ enum _store_type
    STATUS_type     // 6
 };
 
-void write_to_log(const char *str_to_write)
-{
-   const char *file_path = "logger.txt";
-   FILE *file = fopen(file_path, "a");
-
-   if (file == NULL)
-   {
-      perror("Error opening file");
-      return;
-   }
-
-   fprintf(file, "%s\n", str_to_write);
-   fclose(file);
-}
-
 _id_t storeStatementHelper(sqlite3 *db, int num_args, const int *args,
                            char **arbitrary_data, int is_prepared, const char *sql_format, enum _store_type store_type)
 {
    _id_t id = 0;
-   write_to_log(sql_format);
 
    if (is_prepared == 1)
    {
@@ -47,30 +31,20 @@ _id_t storeStatementHelper(sqlite3 *db, int num_args, const int *args,
 
       for (int i = 0; i < num_args; i++)
       {
-         write_to_log("iterating... ");
          char *data = arbitrary_data[i];
          if (args[i] == 1)
          {
             // label 1 meaning it's integer
             int data_int = atoi(data);
             sqlite3_bind_int(stmt, i + 1, data_int);
-            char buffer[50]; // Buffer to hold the formatted string
-            snprintf(buffer, sizeof(buffer), "binded int %d", data_int);
-            write_to_log(buffer);
          }
          else
          {
             // label 0 meaning it's string
             sqlite3_bind_text(stmt, i + 1, data, (int)strnlen(data, MAX_NAME_LEN),
                               SQLITE_STATIC);
-            char buffer[50]; // Buffer to hold the formatted string
-            snprintf(buffer, sizeof(buffer), "binded text %s", data);
-            write_to_log(buffer);
          }
       }
-      const char *sql_stmt = sqlite3_sql(stmt);
-      write_to_log(sql_stmt);
-
       sqlite3_step(stmt);
 
       // all store type less or equal to Voter would need to insert a row and have the id returned
@@ -80,22 +54,10 @@ _id_t storeStatementHelper(sqlite3 *db, int num_args, const int *args,
          if (rc == SQLITE_OK)
          {
             id = (_id_t)sqlite3_last_insert_rowid(db);
-
-            char buffer[50];
-            snprintf(buffer, sizeof(buffer), "the id number is %d", id);
-            write_to_log(buffer);
-         }
-         else
-         {
-            const char *error_message = sqlite3_errmsg(sqlite3_db_handle(stmt));
-
-            write_to_log("gotten error message");
-            write_to_log(error_message);
          }
       }
       else
       {
-         write_to_log("gotten to non-voter statement");
          sqlite3_finalize(stmt);
       }
    }
@@ -109,28 +71,15 @@ _id_t storeStatementHelper(sqlite3 *db, int num_args, const int *args,
                (num_args > 3) ? ((args[3] == 1) ? (void *)(long)atoi(arbitrary_data[3]) : arbitrary_data[3]) : NULL,
                (num_args > 4) ? ((args[4] == 1) ? (void *)(long)atoi(arbitrary_data[4]) : arbitrary_data[4]) : NULL,
                (num_args > 5) ? ((args[5] == 1) ? (void *)(long)atoi(arbitrary_data[5]) : arbitrary_data[5]) : NULL);
-      write_to_log(sql);
       char *errMsg = 0;
       int rc;
       rc = sqlite3_exec(db, sql, 0, 0, &errMsg);
-
       if (rc == SQLITE_OK)
       {
          if (store_type <= VOTER_type)
          {
             id = (_id_t)sqlite3_last_insert_rowid(db);
-
-            char buffer[50];
-            snprintf(buffer, sizeof(buffer), "the id number is %d", id);
-            write_to_log(buffer);
          }
-         else
-            write_to_log("process succeeded");
-      }
-      else
-      {
-         write_to_log("gotten error message");
-         write_to_log(errMsg);
       }
    }
    return id;
@@ -252,10 +201,9 @@ _id_t storeVoter(sqlite3 *db, char *name, char *county, int zip, Date dob)
 {
 
    char *arbitrary_data[6];
-   write_to_log("here");
-   write_to_log(name);
    const int args[6] = {0, 0, 1, 1, 1, 1};
-   const char *sql_format = (INTEGER_UP_TO_CHANGE == 1)
+   int integer_up_to_change = strcmp(county, "proxy") ?  INTEGER_UP_TO_CHANGE : 0;
+   const char *sql_format = (integer_up_to_change == 1)
                                 ? "INSERT INTO Registration(name,county,zip,dob_day,dob_mon,dob_year) VALUES (?, ?, ?, ?, ?, ?)"
                                 : "INSERT INTO Registration(name,county,zip,dob_day,dob_mon,dob_year) VALUES ('%s', '%s', %d, %d, %d, %d)";
    char zip_str[128];
@@ -273,7 +221,7 @@ _id_t storeVoter(sqlite3 *db, char *name, char *county, int zip, Date dob)
    arbitrary_data[4] = dob_month;
    arbitrary_data[5] = dob_year;
 
-   _id_t id = storeStatementHelper(db, 6, args, arbitrary_data, INTEGER_UP_TO_CHANGE, sql_format, VOTER_type);
+   _id_t id = storeStatementHelper(db, 6, args, arbitrary_data, integer_up_to_change, sql_format, VOTER_type);
    return id;
 }
 

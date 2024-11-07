@@ -31,21 +31,6 @@ bool is18AtDeadline(Date dob, Date deadline);
 int compareDates(Date a, Date b);
 char *url_decode(const char *src);
 
-void write_to_log_haha(const char *str_to_write)
-{
-   const char *file_path = "logger.txt";
-   FILE *file = fopen(file_path, "a");
-
-   if (file == NULL)
-   {
-      perror("Error opening file");
-      return;
-   }
-
-   fprintf(file, "%s\n", str_to_write);
-   fclose(file);
-}
-
 bool parseDate(const char *const date_in, Date *date_out)
 {
    int year_in, month_in, day_in;
@@ -188,20 +173,16 @@ int main(int argc, char **argv)
       Date dob;
       strncpy(name, url_decode(argv[2]), MAX_NAME_LEN - 1);
       strncpy(county, url_decode(argv[3]), MAX_NAME_LEN - 1);
-      write_to_log_haha(name);
-      write_to_log_haha(county);
       if (sscanf(argv[4], "%d", &zip) != 1)
       {
          printf("%s", USAGE);
          return ERROR;
       }
-      write_to_log_haha("after parse zip");
       if (!parseDate(argv[5], &dob))
       {
          printf("%s", USAGE);
          return ERROR;
       }
-      write_to_log_haha("after parse date");
       printf("%d\n", storeVoter(db, name, county, zip, dob));
       return 0;
    }

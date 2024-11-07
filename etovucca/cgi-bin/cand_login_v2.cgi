@@ -69,7 +69,7 @@ try:
             url_plus_query = f"{redirectURL}?candidate={form.getvalue('cand_name')}&election={form.getvalue('elec_num')}"
             print("Location: %s" % url_plus_query)
             C = SimpleCookie()
-            C["user"] = hash_pswd  # U+1F914
+            C["user"] = hash_pswd
             print(C)
             print("")
             print("<html>")

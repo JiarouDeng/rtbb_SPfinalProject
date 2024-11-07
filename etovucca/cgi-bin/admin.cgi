@@ -105,7 +105,6 @@ try:
     print('<a href="login.cgi?logout=true">Logout</a><br>')
 
     if len(form) != 0:
-        # print('<b>{}</b><br>'.format(form))
         if "action" in form:
             if form.getvalue("action") == "open":
                 subprocess.check_output(
@@ -141,7 +140,6 @@ try:
             election_id = convert_date_to_id(form.getvalue("election"))
             command = f"{PATH_TO_MACHINE} add-office {str(election_id)} {form.getvalue('addOffice')}"
             subprocess.check_output(command, shell=True)
-            # subprocess.check_output([PATH_TO_MACHINE, 'add-office', str(election_id), form.getvalue('addOffice')])
             print(
                 "<b>Successfully added {} to election {}</b>".format(
                     form.getvalue("addOffice"), form.getvalue("election")

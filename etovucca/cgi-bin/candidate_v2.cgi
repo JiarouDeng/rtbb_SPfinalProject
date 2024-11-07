@@ -24,7 +24,6 @@ UPDATE_BIO = "UPDATE Candidate SET bio=? WHERE name=? AND office=?"
 
 
 def get_introduction(params: Dict[str, any]) -> str:
-    # Connect to the SQLite database
     connection = sqlite3.connect(PATH_TO_DB)
     cursor = connection.cursor()
     cursor.execute(GET_BIO, (params["candidate"][0], int(params["election"][0])))
@@ -34,10 +33,8 @@ def get_introduction(params: Dict[str, any]) -> str:
 
 
 def update_introduction(params: Dict[str, any], new_bio: str) -> str:
-    # Connect to the SQLite database
     connection = sqlite3.connect(PATH_TO_DB)
     cursor = connection.cursor()
-    # Execute the parameterized update query
     cursor.execute(
         UPDATE_BIO, (new_bio, params["candidate"][0], int(params["election"][0]))
     )

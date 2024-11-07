@@ -5,7 +5,7 @@ import cgi
 
 # Define the path to the introduction file
 PATH_TO_UPLOADS = "./candidate_info"
-INTRO_FILE = os.path.join(PATH_TO_UPLOADS, 'introduction.txt')
+INTRO_FILE = os.path.join(PATH_TO_UPLOADS, "introduction.txt")
 
 print("Content-Type: text/html")
 print()
@@ -15,17 +15,15 @@ print('<h1 id="candidate">Candidate Profile</h1>')
 
 user_name = "[User name]"
 
-print('<h2>{}</h2>'.format(user_name))
+print("<h2>{}</h2>".format(user_name))
 
 if os.path.exists(INTRO_FILE):
-    with open(INTRO_FILE, 'r') as file:
+    with open(INTRO_FILE, "r") as file:
         introduction = file.read()
-    print('<h3>Introduction</h3>')
+    print("<h3>Introduction</h3>")
     print('<hr style="border: none; border-top: 2px solid #ccc;">')
-    print('<p>{}</p>'.format(introduction))
+    print("<p>{}</p>".format(introduction))
 else:
     print("<p>No introduction found.</p>")
 
 print("</body></html>")
-
-

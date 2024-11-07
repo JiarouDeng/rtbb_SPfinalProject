@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 import os, sqlite3, cgi
 from typing import Dict, List, Tuple
 
@@ -27,7 +26,6 @@ def get_all_candidates() -> Dict[str, List[Tuple[str, str]]]:
 
 
 def generate_html() -> str:
-    # Initialize HTML content
     html_content = """
     <head>
         <style>
@@ -41,13 +39,10 @@ def generate_html() -> str:
     candidate_dict = get_all_candidates()
     idx = 0
     for election_name, candidate_list in candidate_dict.items():
-        # If this is a new election, add a new election header
         if idx != 0:
-            html_content += "</div>"  # Close the previous election div
+            html_content += "</div>"
         html_content += f'<div class="election"><h2>{election_name}</h2>'
-
         for candidate_name, candidate_bio in candidate_list:
-            # Add each candidate under the current election
             html_content += f"""
                 <div class="candidate">
                     <strong>{candidate_name}</strong>
@@ -55,8 +50,6 @@ def generate_html() -> str:
                 </div>
             """
         idx += 1
-
-    # Close last election div and finalize HTML
     html_content += "</div>"
     return html_content
 
@@ -66,21 +59,6 @@ print()
 print('<link rel="stylesheet" href="https://spar.isi.jhu.edu/teaching/443/main.css">')
 print('<h2 id="dlobeid-etovucca-voting-machine">DLOBEID EtovUcca Voting Machine</h2>')
 print('<h1 id="candidate">Candidate Profile</h1>')
-
 print(generate_html())
-
-# user_name = "[User name]"
-
-
-# print("<h2>{}</h2>".format(user_name))
-
-# if os.path.exists(INTRO_FILE):
-#     with open(INTRO_FILE, "r") as file:
-#         introduction = file.read()
-#     print("<h3>Introduction</h3>")
-#     print('<hr style="border: none; border-top: 2px solid #ccc;">')
-#     print("<p>{}</p>".format(introduction))
-# else:
-#     print("<p>No introduction found.</p>")
 print('<br><a href="home.cgi">Return to Homepage</a>')
 print("</body></html>")
