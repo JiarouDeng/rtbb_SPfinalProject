@@ -75,3 +75,73 @@ INSERT INTO Registration(name,county,zip,dob_day,dob_mon,dob_year) VALUES ('%s',
 INSERT INTO Registration(name,county,zip,dob_day,dob_mon,dob_year) VALUES ('A', 'Baltimore', 21211, 3, 4, 98); INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('B', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('C', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('D', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('E', 'Baltimore', 21211, 4, 4, 98); #.something', 'Baltimore', 21211, 15, 6, 102)
 gotten error message
 unrecognized token: "#"
+INSERT INTO Election(deadline_day,deadline_mon,deadline_year,status) VALUES (%d, %d, %d, %d)
+INSERT INTO Election(deadline_day,deadline_mon,deadline_year,status) VALUES (14, 11, 124, 0)
+the id number is 1
+INSERT INTO Office(name, election) VALUES ('%s', %d)
+INSERT INTO Office(name, election) VALUES ('best_S_and_P_Prof', 1)
+the id number is 1
+INSERT INTO AllowedZip(zip,office) VALUES (%d, %d)
+INSERT INTO AllowedZip(zip,office) VALUES (21211, 1)
+process succeeded
+INSERT INTO Candidate(name,votes,office,password) VALUES ('%s', %d, %d, '%s')
+INSERT INTO Candidate(name,votes,office,password) VALUES ('Paul', 0, 1, 'd8d67a9a7e384b47f8562c32ef3c873b')
+the id number is 1
+INSERT INTO Candidate(name,votes,office,password) VALUES ('%s', %d, %d, '%s')
+INSERT INTO Candidate(name,votes,office,password) VALUES ('Mike', 0, 1, '675941bf66849449a07675ec10e57de1')
+the id number is 2
+UPDATE Election SET status=%d WHERE id=%d
+UPDATE Election SET status=1 WHERE id=1
+process succeeded
+INSERT INTO Election(deadline_day,deadline_mon,deadline_year,status) VALUES (%d, %d, %d, %d)
+INSERT INTO Election(deadline_day,deadline_mon,deadline_year,status) VALUES (14, 11, 124, 0)
+the id number is 1
+INSERT INTO Office(name, election) VALUES ('%s', %d)
+INSERT INTO Office(name, election) VALUES ('best_S_and_P_Prof', 1)
+the id number is 1
+INSERT INTO Office(name, election) VALUES ('%s', %d)
+INSERT INTO Office(name, election) VALUES ('best_S_and_P_Prof', 1)
+gotten error message
+UNIQUE constraint failed: Office.name, Office.election
+INSERT INTO AllowedZip(zip,office) VALUES (%d, %d)
+INSERT INTO AllowedZip(zip,office) VALUES (21211, 1)
+process succeeded
+INSERT INTO Candidate(name,votes,office) VALUES ('%s', %d, %d)
+INSERT INTO Candidate(name,votes,office) VALUES ('Paul', 0, 1)
+the id number is 1
+INSERT INTO Candidate(name,votes,office) VALUES ('%s', %d, %d)
+INSERT INTO Candidate(name,votes,office) VALUES ('Mike', 0, 1)
+the id number is 2
+UPDATE Election SET status=%d WHERE id=%d
+UPDATE Election SET status=1 WHERE id=1
+process succeeded
+INSERT INTO Election(deadline_day,deadline_mon,deadline_year,status) VALUES (%d, %d, %d, %d)
+INSERT INTO Election(deadline_day,deadline_mon,deadline_year,status) VALUES (20, 11, 124, 0)
+the id number is 1
+INSERT INTO Office(name, election) VALUES ('%s', %d)
+INSERT INTO Office(name, election) VALUES ('best_S_and_P_Prof', 1)
+the id number is 1
+INSERT INTO AllowedZip(zip,office) VALUES (%d, %d)
+INSERT INTO AllowedZip(zip,office) VALUES (21211, 1)
+process succeeded
+INSERT INTO Candidate(name,votes,office,bio) VALUES ('%s', %d, %d, '%s')
+INSERT INTO Candidate(name,votes,office,bio) VALUES ('Paul', 0, 1, 'This candidate has not created their bio yet...')
+the id number is 1
+INSERT INTO Candidate(name,votes,office,bio) VALUES ('%s', %d, %d, '%s')
+INSERT INTO Candidate(name,votes,office,bio) VALUES ('Mike', 0, 1, 'This candidate has not created their bio yet...')
+the id number is 2
+UPDATE Election SET status=%d WHERE id=%d
+UPDATE Election SET status=1 WHERE id=1
+process succeeded
+INSERT INTO Office(name, election) VALUES ('%s', %d)
+INSERT INTO Office(name, election) VALUES ('Blockchain', 1)
+the id number is 2
+INSERT INTO AllowedZip(zip,office) VALUES (%d, %d)
+INSERT INTO AllowedZip(zip,office) VALUES (21212, 2)
+process succeeded
+INSERT INTO Candidate(name,votes,office,bio) VALUES ('%s', %d, %d, '%s')
+INSERT INTO Candidate(name,votes,office,bio) VALUES ('Matthew', 0, 2, 'This candidate has not created their bio yet...')
+the id number is 3
+INSERT INTO Candidate(name,votes,office,bio) VALUES ('%s', %d, %d, '%s')
+INSERT INTO Candidate(name,votes,office,bio) VALUES ('Green', 0, 2, 'This candidate has not created their bio yet...')
+the id number is 4

@@ -18,8 +18,8 @@ _id_t storeOffice(sqlite3 *db, _id_t election, char *name);
 
 /* returns candidate id */
 //  _id_t storeCandidate(sqlite3 *db, _id_t office, char *name);
-_id_t storeCandidate(sqlite3 *db, _id_t office, char *name, char *password);
-void getCandidate(sqlite3 *db, _id_t candidate_id, Candidate *, char *password);
+_id_t storeCandidate(sqlite3 *db, _id_t office, char *name);
+void getCandidate(sqlite3 *db, _id_t candidate_id, Candidate *);
 
 void addZip(sqlite3 *db, _id_t office, int zip);
 

@@ -177,28 +177,24 @@ _id_t storeOffice(sqlite3 *db, _id_t election, char *name)
 }
 
 // _id_t storeCandidate(sqlite3 *db, _id_t office, char *name)
-_id_t storeCandidate(sqlite3 *db, _id_t office, char *name, char *password)
+_id_t storeCandidate(sqlite3 *db, _id_t office, char *name)
 {
 
-   // char *arbitrary_data[3];
-   // const int args[3] = {0, 1, 1};
-   // const char *sql_format = (INTEGER_UP_TO_CHANGE == 1)
-   //                              ? "INSERT INTO Candidate(name,votes,office) VALUES (?, ?, ?)"
-   //                              : "INSERT INTO Candidate(name,votes,office) VALUES ('%s', %d, %d)";
+    char *arbitrary_data[4];
+    const int args[4] = {0, 1, 1, 0};
+    const char *sql_format = (INTEGER_UP_TO_CHANGE == 1)
+                                 ? "INSERT INTO Candidate(name,votes,office,bio) VALUES (?, ?, ?, ?)"
+                                 : "INSERT INTO Candidate(name,votes,office,bio) VALUES ('%s', %d, %d, '%s')";
 
-   char *arbitrary_data[4];
-   const int args[4] = {0, 1, 1, 0};
-   const char *sql_format = (INTEGER_UP_TO_CHANGE == 1)
-                                ? "INSERT INTO Candidate(name,votes,office) VALUES (?, ?, ?, ?)"
-                                : "INSERT INTO Candidate(name,votes,office) VALUES ('%s', %d, %d, '%s')";
    char binary_str[128];
    char office_str[128];
+   char bio_str[128] =  "This candidate has not created their bio yet...";
    snprintf(binary_str, sizeof(binary_str), "%d", 0);
    snprintf(office_str, sizeof(office_str), "%d", office);
    arbitrary_data[0] = name;
    arbitrary_data[1] = binary_str;
    arbitrary_data[2] = office_str;
-   arbitrary_data[3] = password;
+   arbitrary_data[3] = bio_str;
 
    _id_t id = storeStatementHelper(db, 4, args, arbitrary_data, INTEGER_UP_TO_CHANGE, sql_format, CANTIDATE_type);
    return id;
@@ -221,10 +217,10 @@ void addZip(sqlite3 *db, _id_t office, int zip)
    storeStatementHelper(db, 2, args, arbitrary_data, INTEGER_UP_TO_CHANGE, sql_format, ZIP_type);
 }
 
-void getCandidate(sqlite3 *db, _id_t candidate_id, Candidate *dest, char *password)
+void getCandidate(sqlite3 *db, _id_t candidate_id, Candidate *dest)
 {
    sqlite3_stmt *stmt;
-   const char *sql = "SELECT name,password\
+   const char *sql = "SELECT name\
                       FROM Candidate WHERE id=?";
    sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
    sqlite3_bind_int(stmt, 1, candidate_id);

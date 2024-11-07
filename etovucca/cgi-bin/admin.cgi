@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 
-import cgi
-import subprocess
-import json, string, random, hashlib
+import cgi, json, subprocess
 from os import environ
 from http.cookies import SimpleCookie
 
@@ -150,20 +148,12 @@ try:
                 )
             )
         elif "addCandidate" in form:
-            random.seed(42)
-            letters = string.ascii_letters + string.digits
-            ounce = "".join(random.choice(letters) for i in range(25))
-            result_str = (
-                ounce + form.getvalue("addCandidate") + str(form.getvalue("office"))
-            )
-            hash_pswd = hashlib.md5(result_str.encode()).hexdigest()
             subprocess.check_output(
                 [
                     PATH_TO_MACHINE,
                     "add-candidate",
                     form.getvalue("office"),
                     form.getvalue("addCandidate"),
-                    hash_pswd,
                 ]
             )
             print(

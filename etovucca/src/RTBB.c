@@ -12,7 +12,7 @@ static sqlite3 *db;
 const char *USAGE = "Usage:\n\
    add-election <deadline date> -> <election id>\n\
    add-office <election id> <name> -> <office id>\n\
-   add-candidate <office id> <name> <password> -> <candidate id>\n\
+   add-candidate <office id> <name> -> <candidate id>\n\
    add-zip <office id> <zip code>\n\
    add-voter <name> <county name> <zip code> <date of birth> -> <voter id>\n\
    open-election <election id>\n\
@@ -140,25 +140,18 @@ int main(int argc, char **argv)
       }
       _id_t office;
       char name[MAX_NAME_LEN];
+
+      // char password[MAX_NAME_LEN];
       if (sscanf(argv[2], "%d", &office) != 1)
       {
          printf("%s", USAGE);
          return ERROR;
       }
-      // strncpy(name, argv[3], MAX_NAME_LEN - 1);
+      strncpy(name, argv[3], MAX_NAME_LEN - 1);
+      // strncpy(password, argv[4], MAX_NAME_LEN - 1);
 
-      char password[MAX_NAME_LEN];
-      if (sscanf(argv[3], "%d", &office) != 1)
-      {
-         printf("%s", USAGE);
-         return ERROR;
-      }
-
-      strncpy(name, argv[4], MAX_NAME_LEN - 1);
-      strncpy(password, argv[5], MAX_NAME_LEN - 1);
-
-      printf("%d\n", storeCandidate(db, office, name, password));
-      // printf("%d\n", storeCandidate(db, office, name));
+      // printf("%d\n", storeCandidate(db, office, name, password));
+      printf("%d\n", storeCandidate(db, office, name));
    }
    else if (!strncmp("add-zip", argv[1], MAX_NAME_LEN))
    {
