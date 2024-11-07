@@ -189,8 +189,8 @@ _id_t storeCandidate(sqlite3 *db, _id_t office, char *name, char *password)
    char *arbitrary_data[4];
    const int args[4] = {0, 1, 1, 0};
    const char *sql_format = (INTEGER_UP_TO_CHANGE == 1)
-                                ? "INSERT INTO Candidate(name,votes,office,password) VALUES (?, ?, ?, ?)"
-                                : "INSERT INTO Candidate(name,votes,office,password) VALUES ('%s', %d, %d, '%s')";
+                                ? "INSERT INTO Candidate(name,votes,office) VALUES (?, ?, ?, ?)"
+                                : "INSERT INTO Candidate(name,votes,office) VALUES ('%s', %d, %d, '%s')";
    char binary_str[128];
    char office_str[128];
    snprintf(binary_str, sizeof(binary_str), "%d", 0);

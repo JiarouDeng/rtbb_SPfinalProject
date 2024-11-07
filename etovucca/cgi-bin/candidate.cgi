@@ -37,7 +37,7 @@ if "introduction" in form:
 
 print("""
 <form action="./candidate.cgi" method="post">
-    <p>Introduction: <textarea name="introduction" rows="10" cols="30"></textarea></p>
+    <p> <textarea name="introduction" rows="10" cols="30"></textarea></p>
     <p><input type="submit" value="Save"></p>
 </form>
 """)

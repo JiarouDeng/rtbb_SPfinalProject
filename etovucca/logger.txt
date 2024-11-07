@@ -56,111 +56,22 @@ the id number is 6
 INSERT INTO Office(name, election) VALUES ('%s', %d)
 INSERT INTO Office(name, election) VALUES ('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 1)
 the id number is 7
+Qiqi
+Baltimore
+after parse zip
+after parse date
+here
+Qiqi
+INSERT INTO Registration(name,county,zip,dob_day,dob_mon,dob_year) VALUES ('%s', '%s', %d, %d, %d, %d)
+INSERT INTO Registration(name,county,zip,dob_day,dob_mon,dob_year) VALUES ('Qiqi', 'Baltimore', 21211, 5, 5, 102)
+the id number is 1
 A', 'Baltimore', 21211, 3, 4, 98); INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('B', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('C', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('D', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('E', 'Baltimore', 21211, 4, 4, 98); #.something
-haha
+Baltimore
 after parse zip
 after parse date
 here
 A', 'Baltimore', 21211, 3, 4, 98); INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('B', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('C', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('D', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('E', 'Baltimore', 21211, 4, 4, 98); #.something
 INSERT INTO Registration(name,county,zip,dob_day,dob_mon,dob_year) VALUES ('%s', '%s', %d, %d, %d, %d)
-INSERT INTO Registration(name,county,zip,dob_day,dob_mon,dob_year) VALUES ('A', 'Baltimore', 21211, 3, 4, 98); INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('B', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('C', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('D', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('E', 'Baltimore', 21211, 4, 4, 98); #.something', 'haha', 21211, 15, 6, 102)
+INSERT INTO Registration(name,county,zip,dob_day,dob_mon,dob_year) VALUES ('A', 'Baltimore', 21211, 3, 4, 98); INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('B', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('C', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('D', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('E', 'Baltimore', 21211, 4, 4, 98); #.something', 'Baltimore', 21211, 15, 6, 102)
 gotten error message
 unrecognized token: "#"
-Qi QI
-Baltimoe
-after parse zip
-after parse date
-here
-Qi QI
-INSERT INTO Registration(name,county,zip,dob_day,dob_mon,dob_year) VALUES ('%s', '%s', %d, %d, %d, %d)
-INSERT INTO Registration(name,county,zip,dob_day,dob_mon,dob_year) VALUES ('Qi QI', 'Baltimoe', 21211, 15, 6, 102)
-the id number is 1
-A', 'Baltimore', 21211, 3, 4, 98); INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('B', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('C', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('D', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('E', 'Baltimore', 21211, 4, 4, 98); #.something
-haha
-after parse zip
-after parse date
-here
-A', 'Baltimore', 21211, 3, 4, 98); INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('B', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('C', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('D', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('E', 'Baltimore', 21211, 4, 4, 98); #.something
-INSERT INTO Registration(name,county,zip,dob_day,dob_mon,dob_year) VALUES ('%s', '%s', %d, %d, %d, %d)
-INSERT INTO Registration(name,county,zip,dob_day,dob_mon,dob_year) VALUES ('A', 'Baltimore', 21211, 3, 4, 98); INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('B', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('C', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('D', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('E', 'Baltimore', 21211, 4, 4, 98); #.something', 'haha', 21211, 1, 1, 101)
-gotten error message
-unrecognized token: "#"
-INSERT INTO Election(deadline_day,deadline_mon,deadline_year,status) VALUES (%d, %d, %d, %d)
-INSERT INTO Election(deadline_day,deadline_mon,deadline_year,status) VALUES (13, 11, 124, 0)
-the id number is 1
-INSERT INTO Office(name, election) VALUES ('%s', %d)
-INSERT INTO Office(name, election) VALUES ('best', 1)
-the id number is 1
-INSERT INTO AllowedZip(zip,office) VALUES (%d, %d)
-INSERT INTO AllowedZip(zip,office) VALUES (21211, 1)
-process succeeded
-INSERT INTO Office(name, election) VALUES ('%s', %d)
-INSERT INTO Office(name, election) VALUES ('best_S', 1)
-the id number is 2
-INSERT INTO Office(name, election) VALUES ('%s', %d)
-INSERT INTO Office(name, election) VALUES ('best_S_and_P_Prof', 1)
-the id number is 3
-INSERT INTO AllowedZip(zip,office) VALUES (%d, %d)
-INSERT INTO AllowedZip(zip,office) VALUES (21211, 3)
-gotten error message
-UNIQUE constraint failed: AllowedZip.zip
-there are a total of 4 add-candidate arguments
-the third argument is: Paul
-there are a total of 5 add-candidate arguments
-the third argument is: Paul
-INSERT INTO Candidate(name,votes,office) VALUES ('%s', %d, %d, '%s')
-INSERT INTO Candidate(name,votes,office) VALUES ('Paul', 0, 3, 'OhbVrpoiVgRV5IfLBcbfnoGMb')
-gotten error message
-4 values for 3 columns
-there are a total of 5 add-candidate arguments
-the third argument is: Paul
-INSERT INTO Candidate(name,votes,office,password) VALUES ('%s', %d, %d, '%s')
-INSERT INTO Candidate(name,votes,office,password) VALUES ('Paul', 0, 3, 'OhbVrpoiVgRV5IfLBcbfnoGMb')
-the id number is 1
-there are a total of 5 add-candidate arguments
-the third argument is: Mike
-INSERT INTO Candidate(name,votes,office,password) VALUES ('%s', %d, %d, '%s')
-INSERT INTO Candidate(name,votes,office,password) VALUES ('Mike', 0, 3, 'OhbVrpoiVgRV5IfLBcbfnoGMb')
-the id number is 2
-UPDATE Election SET status=%d WHERE id=%d
-UPDATE Election SET status=1 WHERE id=1
-process succeeded
-2024-11-13
-2
-0
-getting unique_office_id 3 and unqiue_candidate_id 12024-11-13;INSERT INTO Candidate(name,votes,office,password) VALUES  ('David',10,3,'1234567');#SELECT id FROM Election WHERE deadline_day=13;INSERT INTO Candidate(name,votes,office,password) VALUES  ('David',10,3,'1234567');# AND deadline_mon=11 AND deadline_year=124A', 'Baltimore', 21211, 3, 4, 98); INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('B', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('C', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('D', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('E', 'Baltimore', 21211, 4, 4, 98); #.something
-haha
-after parse zip
-after parse date
-here
-A', 'Baltimore', 21211, 3, 4, 98); INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('B', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('C', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('D', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('E', 'Baltimore', 21211, 4, 4, 98); #.something
-INSERT INTO Registration(name,county,zip,dob_day,dob_mon,dob_year) VALUES ('%s', '%s', %d, %d, %d, %d)
-INSERT INTO Registration(name,county,zip,dob_day,dob_mon,dob_year) VALUES ('A', 'Baltimore', 21211, 3, 4, 98); INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('B', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('C', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('D', 'Baltimore', 21211, 4, 4, 98);  INSERT INTO Registration(name,county,zip, dob_day,dob_mon,dob_year) VALUES ('E', 'Baltimore', 21211, 4, 4, 98); #.something', 'haha', 21211, 15, 6, 102)
-gotten error message
-unrecognized token: "#"
-INSERT INTO Election(deadline_day,deadline_mon,deadline_year,status) VALUES (%d, %d, %d, %d)
-INSERT INTO Election(deadline_day,deadline_mon,deadline_year,status) VALUES (14, 11, 124, 0)
-the id number is 1
-INSERT INTO Office(name, election) VALUES ('%s', %d)
-INSERT INTO Office(name, election) VALUES ('best_s_and_p_prof', 1)
-the id number is 1
-INSERT INTO AllowedZip(zip,office) VALUES (%d, %d)
-INSERT INTO AllowedZip(zip,office) VALUES (21211, 1)
-process succeeded
-there are a total of 5 add-candidate arguments
-the third argument is: Paul
-INSERT INTO Candidate(name,votes,office,password) VALUES ('%s', %d, %d, '%s')
-INSERT INTO Candidate(name,votes,office,password) VALUES ('Paul', 0, 1, '37da6924b1f295507f6a9bfeec592158')
-the id number is 1
-there are a total of 5 add-candidate arguments
-the third argument is: Mike
-INSERT INTO Candidate(name,votes,office,password) VALUES ('%s', %d, %d, '%s')
-INSERT INTO Candidate(name,votes,office,password) VALUES ('Mike', 0, 1, 'd0528b1b39b6afe84350fae8224df073')
-the id number is 2
-UPDATE Election SET status=%d WHERE id=%d
-UPDATE Election SET status=1 WHERE id=1
-process succeeded
-2024-11-14
-0
-0
-getting unique_office_id 1 and unqiue_candidate_id 12024-11-14;INSERT INTO Candidate(name,votes,office,password) VALUES  ('David',10,1,'1234567');#SELECT id FROM Election WHERE deadline_day=14;INSERT INTO Candidate(name,votes,office,password) VALUES  ('David',10,1,'1234567');# AND deadline_mon=11 AND deadline_year=124
