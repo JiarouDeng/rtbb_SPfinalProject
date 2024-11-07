@@ -24,7 +24,7 @@ const char *USAGE = "Usage:\n\
    get-voters\n\
 ";
 
-// replaced line: add-candidate <office id> <name> -> <candidate id>\n\
+// replaced line: add-candidate <office id> <name> -> <candidate id>\n
 
 bool isEligible(_id_t election, _id_t office, _id_t voter);
 bool is18AtDeadline(Date dob, Date deadline);
@@ -133,29 +133,34 @@ int main(int argc, char **argv)
    }
    else if (!strncmp("add-candidate", argv[1], MAX_NAME_LEN))
    {
-      if (argc < 4)
+      char buffer1[50]; // Buffer to hold the formatted string
+      char buffer2[50];
+      snprintf(buffer1, sizeof(buffer1), "there are a total of %d add-candidate arguments", argc);
+      snprintf(buffer2, sizeof(buffer2), "the third argument is: %s", argv[3]);
+      write_to_log_haha(buffer1);
+      write_to_log_haha(buffer2);
+      if (argc < 5)
       {
          printf("%s", USAGE);
          return ERROR;
       }
       _id_t office;
       char name[MAX_NAME_LEN];
+      char password[MAX_NAME_LEN];
       if (sscanf(argv[2], "%d", &office) != 1)
       {
          printf("%s", USAGE);
          return ERROR;
       }
       // strncpy(name, argv[3], MAX_NAME_LEN - 1);
+      // if (sscanf(argv[3], "%d", &office) != 1)
+      // {
+      //    printf("%s", USAGE);
+      //    return ERROR;
+      // }
 
-      char password[MAX_NAME_LEN];
-      if (sscanf(argv[3], "%d", &office) != 1)
-      {
-         printf("%s", USAGE);
-         return ERROR;
-      }
-
-      strncpy(name, argv[4], MAX_NAME_LEN - 1);
-      strncpy(password, argv[5], MAX_NAME_LEN - 1);
+      strncpy(name, argv[3], MAX_NAME_LEN - 1);
+      strncpy(password, argv[4], MAX_NAME_LEN - 1);
 
       printf("%d\n", storeCandidate(db, office, name, password));
       // printf("%d\n", storeCandidate(db, office, name));
